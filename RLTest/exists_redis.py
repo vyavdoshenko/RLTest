@@ -60,12 +60,13 @@ class ExistsRedisEnv(object):
         return self.getConnection()
 
     def _waitForBgsaveToFinish(self):
+        return
         # on new Redis version (6.2 and above)
         # flush trigger background rdb save
         # waiting for rdbsave to finish
-        while True:
-            if not self.getConnection().execute_command('info', 'Persistence')['rdb_bgsave_in_progress']:
-                break
+        #while True:
+        #    if not self.getConnection().execute_command('info', 'Persistence')['rdb_bgsave_in_progress']:
+        #        break
 
     def flush(self):
         self.getConnection().flushall()
